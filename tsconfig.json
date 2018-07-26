@@ -10,10 +10,10 @@
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "baseUrl": "./src",
     "jsx": "react",
-    "declarationDir": "dist/"
+    "declarationDir": "./lib/"
   },
   "include": [
     "src/*",

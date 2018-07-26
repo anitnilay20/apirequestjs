@@ -6,9 +6,9 @@
   "main": "index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist && tsc -d",
-    "install": "npm build",
-    "postinstall": "npm build"
+    "build": "rm -rf ./lib && tsc -d",
+    "install": "npm run build",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "api",
