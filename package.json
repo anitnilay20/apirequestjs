@@ -4,9 +4,10 @@
   "title": "Request Api.Js",
   "description": "Access json api with ease",
   "main": "index.js",
-  "typings": "index.d.ts",
+  "typings": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist && tsc -d"
+    "build": "rm -rf ./dist && tsc -d",
+    "install": "npm build"
   },
   "keywords": [
     "api",
