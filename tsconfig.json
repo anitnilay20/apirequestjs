@@ -13,7 +13,12 @@
     "outDir": "./lib",
     "baseUrl": "./src",
     "jsx": "react",
-    "declarationDir": "./lib/"
+    "declarationDir": "./lib/",
+    "lib": [
+      "es6",
+      "dom",
+      "esnext",
+    ]
   },
   "include": [
     "src/*",
