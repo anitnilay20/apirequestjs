@@ -7,7 +7,6 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc -d",
-    "install": "npm run build",
     "postinstall": "npm run build"
   },
   "keywords": [
