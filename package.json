@@ -1,13 +1,12 @@
 {
   "name": "requestapijs",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "title": "Request Api.Js",
   "description": "Access json api with ease",
   "main": "index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc -d",
-    "postinstall": "npm run build"
+    "postinstall": "tsc -d"
   },
   "keywords": [
     "api",
