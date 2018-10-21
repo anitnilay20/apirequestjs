@@ -1,4 +1,4 @@
-export default class Api {
+export default class Api<Response, Variables> {
     private _request = new XMLHttpRequest();
     private _data = null;
     private _onError = null;
@@ -32,7 +32,12 @@ export default class Api {
       this._query = query;
       return this;
     }
-  
+
+    graphql(url: string, query: string, variables: Variables): this {
+      this.post(url, {query, variables})
+      return this;
+    }
+    
     post(url: string, data: object, query?: object): this {
       this._methodFunction = 'post';
       this._url = url;
@@ -78,7 +83,7 @@ export default class Api {
       }, 400);
     }
   
-    success(onSuccess: (reposnse: any) => void) {
+    success(onSuccess: (reposnse: Response) => void) {
       this._request.onload = () => {
         if (this._request.status >= 200 && this._request.status < 400)
           onSuccess(this._request.responseText && this._request.responseText && this._parser(this._request.responseText));

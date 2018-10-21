@@ -6,7 +6,7 @@
   "main": "index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "postinstall": "tsc -d"
+    "prepublish": "tsc"
   },
   "keywords": [
     "api",
