@@ -8,6 +8,7 @@
   "scripts": {
     "prepublishOnly": "tsc"
   },
+  "bin": "./lib/fetch-graphql.js",
   "keywords": [
     "api",
     "request"
@@ -19,6 +20,14 @@
   "author": "anit.nilay20@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@gql2ts/from-query": "^1.9.0",
+    "@gql2ts/types": "^1.9.0",
+    "@types/node": "^10.12.12",
+    "commander": "^2.19.0",
+    "graphql": "^14.0.2",
+    "node": "^11.2.0",
+    "node-fetch": "^2.3.0",
+    "ts-node": "^7.0.1",
     "typescript": "^2.9.2"
   }
 }
