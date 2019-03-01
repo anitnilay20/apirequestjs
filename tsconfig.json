@@ -26,5 +26,10 @@
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": [
+        "./src/**/*"
+    ]
+  }
 }

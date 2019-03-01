@@ -3,8 +3,6 @@ import * as program from 'commander';
 import fetch from 'node-fetch'
 import { introspectionQuery } from 'graphql/utilities/introspectionQuery';
 import { Schema, Args, Field, Type } from './gqlSchemaType';
-import { buildClientSchema } from 'graphql/utilities/buildClientSchema';
-import { printSchema } from 'graphql/utilities/schemaPrinter';
 import { createWriteStream } from 'fs';
 
 const { version } = require('../package.json');

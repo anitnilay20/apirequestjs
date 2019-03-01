@@ -1,3 +1,7 @@
-node_modules
-dist
-lib
+.idea/
+dist/
+lib/
+node_modules/
+src/**/*.jsx
+tests/__coverage__/
+tests/**/*.jsx
