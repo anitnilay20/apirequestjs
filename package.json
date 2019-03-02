@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "title": "Request Api.Js",
   "description": "Access json api with ease",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config=configs/webpack/dev.js",
@@ -27,7 +27,8 @@
     "@gql2ts/types": "^1.9.0",
     "commander": "^2.19.0",
     "graphql": "^14.0.2",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -42,7 +43,6 @@
     "clean-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.6.0",
-    "node-fetch": "^2.3.0",
     "progress-bar-webpack-plugin": "^1.12.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

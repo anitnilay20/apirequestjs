@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GraphqlQuery, GraphqlClient } from '../components/Grahpql';
+import { GraphqlQuery, GraphqlClient } from './Grahpql';
 
 new GraphqlClient({
   url: 'http://localhost:8000/graphql/',

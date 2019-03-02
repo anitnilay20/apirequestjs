@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const commonConfig = require('./common');
 
 module.exports = merge(commonConfig, {
-  mode: 'development',
+  mode: 'production',
   entry: '../index.ts',
   output: {
     filename: 'index.js',
