@@ -1,6 +1,6 @@
 .idea/
 dist/
-lib/
+/lib
 node_modules/
 src/**/*.jsx
 tests/__coverage__/
