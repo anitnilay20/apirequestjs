@@ -1,6 +1,6 @@
 {
   "name": "requestapijs",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "title": "Request Api.Js",
   "description": "Access json api with ease",
   "main": "./lib/index.js",
@@ -27,8 +27,8 @@
     "@gql2ts/types": "^1.9.0",
     "commander": "^2.19.0",
     "graphql": "^14.0.2",
-    "rxjs": "^6.4.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "rxjs": "^6.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
