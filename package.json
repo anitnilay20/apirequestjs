@@ -1,6 +1,6 @@
 {
   "name": "requestapijs",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "title": "Request Api.Js",
   "description": "Access json api with ease",
   "main": "./lib/index.js",
