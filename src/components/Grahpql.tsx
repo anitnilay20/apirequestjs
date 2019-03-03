@@ -70,7 +70,7 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
     }
 
     return (
-      this.props.render(response && response.response, error, false)
+      this.props.render(response && response.response && response.response.data, error, false)
     );
   }
 }
