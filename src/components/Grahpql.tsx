@@ -59,6 +59,29 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
     )
   }
 
+  componentWillReceiveProps(props: GraphqlQueryProps<Q, V>) {
+    if (JSON.stringify(props.variables) === JSON.stringify(this.props.variables)) {
+      return;
+    }
+
+    const {
+      url,
+      headers
+    } = this.graphqlClient.params;
+
+    Api.post(
+      url,
+      {
+        query: props.queryString,
+        variables: props.variables,
+      },
+      headers,
+    ).subscribe(
+      response => this.setState({ response }),
+      error => this.setState({ error })
+    )
+  }
+
   render() {
     const {
       response,
@@ -78,7 +101,7 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
 export interface GraphqlQueryProps<Q, V> {
   queryString: string;
   variables?: V;
-  render: (response: Q, error?: any, loading?: boolean ) => React.ReactElement;
+  render: (response: Q, error?: any, loading?: boolean) => React.ReactElement;
 }
 
 interface State {

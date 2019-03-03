@@ -12,18 +12,23 @@ export class App extends React.Component {
       <div>
         <GraphqlQuery
           queryString={`
-          {
-            allCompanies {
+          query ProductDropDown($after: String!, $productName: String) {
+            allProducts(first: 10, after: $after, name_Icontains: $productName) {
               edges {
                 node {
-                  id
-                  name
+                  id,
+                  name,
+                  oldBarcodeId,
+                  newBarcodeId
                 }
               }
             }
           }
           `}
-          variables={{}}
+          variables={{
+            after: '',
+            productName: '',
+          }}
           render={(response: any, error, loading) => {
             console.log(response, error, loading)
             if (loading) {
@@ -36,7 +41,7 @@ export class App extends React.Component {
             
             return (
               <div>
-                {response.data.allCompanies.edges.map(x => <li>{x.node.name}</li>)}
+                l
               </div>
             )
           }}
