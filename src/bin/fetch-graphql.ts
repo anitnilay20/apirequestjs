@@ -5,7 +5,7 @@ import { introspectionQuery } from 'graphql/utilities/introspectionQuery';
 import { Schema, Args, Field, Type } from './gqlSchemaType';
 import { createWriteStream } from 'fs';
 
-const { version } = require('../package.json');
+const { version } = require('../../package.json');
 
 const command = program
   .version(version)
