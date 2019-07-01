@@ -1,5 +1,4 @@
 import { ajax, AjaxRequest } from 'rxjs/ajax';
-import { map, catchError } from 'rxjs/operators';
 
 export class Api {
   private static _instance: Api;

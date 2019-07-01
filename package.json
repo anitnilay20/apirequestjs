@@ -7,11 +7,11 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config=configs/webpack/dev.js",
-    "build": "webpack --config=configs/webpack/prod.js",
+    "build": "rm -rf ./lib && tsc",
     "build-cli": "tsc --declaration --outDir ./lib/bin/ --declarationDir ./lib/bin/ ./src/bin/fetch-graphql.ts",
-    "prepublishOnly": "yarn build && yarn build-cli"
+    "prepublishOnly": "yarn build"
   },
-  "bin": "./lib/bin/fetch-graphql.js",
+  "bin": "./lib/src/bin/fetch-graphql.js",
   "keywords": [
     "api",
     "request"
