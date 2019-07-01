@@ -5,10 +5,10 @@ import { introspectionQuery } from 'graphql/utilities/introspectionQuery';
 import { Schema, Args, Field, Type } from './gqlSchemaType';
 import { createWriteStream } from 'fs';
 
-const { version } = require('../../package.json');
+require('pkginfo')(module, 'version');
 
 const command = program
-  .version(version)
+  .version(module.exports.version)
   .option('-u, --url [url]', 'url')
   .option('-h, --header [headers]', 'add header')
   .option('-f, --file [file]', 'file path')

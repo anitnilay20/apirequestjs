@@ -1,6 +1,6 @@
 {
   "name": "requestapijs",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "title": "Request Api.Js",
   "description": "Access json api with ease",
   "main": "./lib/index.js",
@@ -28,6 +28,7 @@
     "commander": "^2.19.0",
     "graphql": "^14.0.2",
     "node-fetch": "^2.3.0",
+    "pkginfo": "^0.4.1",
     "rxjs": "^6.4.0"
   },
   "devDependencies": {
