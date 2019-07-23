@@ -101,7 +101,7 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
 export interface GraphqlQueryProps<Q, V> {
   queryString: string;
   variables?: V;
-  render: (response: Q, error?: any, loading?: boolean) => React.ReactElement;
+  render: (response: Q, error?: any, loading?: boolean) => React.ReactNode;
 }
 
 interface State {
