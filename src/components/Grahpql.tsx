@@ -1,28 +1,7 @@
 import * as React from 'react';
 import Api from '../lib/index';
 import { AjaxResponse } from 'rxjs/ajax';
-
-export interface GraphqlClientParams {
-  url: string;
-  headers?: object;
-}
-
-export class GraphqlClient {
-  static instance: GraphqlClient = null;
-  params: GraphqlClientParams;
-
-  constructor(params?: GraphqlClientParams) {
-    if (GraphqlClient.instance) {
-      return GraphqlClient.instance;
-    } else {
-      GraphqlClient.instance = this;
-    }
-
-    this.params = params;
-    this.params.headers = this.params.headers || {};
-    params.headers['Content-Type'] = 'application/json';
-  }
-}
+import { GraphqlClient } from '../lib/GraphqlClient';
 
 export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>, State> {
   constructor(props: GraphqlQueryProps<Q, V>) {
@@ -31,69 +10,71 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
     this.state = {
       response: null,
       error: null,
-    }
+      loading: true,
+    };
   }
 
   static defaultProps = {
-    variables: {}
-  }
+    variables: {},
+  };
 
   graphqlClient = new GraphqlClient();
 
-  componentDidMount() {
+  fetch(query, variables) {
     const {
       url,
-      headers
+      headers,
     } = this.graphqlClient.params;
 
     Api.post(
       url,
       {
-        query: this.props.queryString,
-        variables: this.props.variables,
+        query,
+        variables,
       },
       headers,
     ).subscribe(
-      response => this.setState({ response }),
-      error => this.setState({ error })
-    )
+      response => this.setState({ response, loading: false }),
+      error => this.setState({ error, loading: false }),
+    );
   }
 
-  componentWillReceiveProps(props: GraphqlQueryProps<Q, V>) {
-    if (JSON.stringify(props.variables) === JSON.stringify(this.props.variables)) {
+  componentDidMount() {
+    if (!this.graphqlClient.params.url) {
+      throw new Error('Graphql Client Not initialised properly');
+    }
+
+    this.fetch(this.props.queryString, this.props.variables);
+  }
+
+  componentDidUpdate(prevProps: GraphqlQueryProps<Q, V>) {
+    if (JSON.stringify(prevProps.variables) === JSON.stringify(this.props.variables)) {
       return;
     }
 
-    const {
-      url,
-      headers
-    } = this.graphqlClient.params;
-
-    Api.post(
-      url,
-      {
-        query: props.queryString,
-        variables: props.variables,
-      },
-      headers,
-    ).subscribe(
-      response => this.setState({ response }),
-      error => this.setState({ error })
-    )
+    this.setState(
+      { loading: true, response: null, error: null },
+      () => this.fetch(this.props.queryString, this.props.variables),
+    );
   }
 
   render() {
     const {
       response,
-      error
+      error,
+      loading,
     } = this.state;
 
     if (!response && !error) {
-      return this.props.render(null, null, true);
+      return this.props.render(null, null, loading);
+    }
+
+    if (error) {
+      this.graphqlClient.params.errorHandler.error(error.status, error.response);
     }
 
     return (
-      this.props.render(response && response.response && response.response.data, error, false)
+      this.props.render(response && response.response && response.response.data, error, loading)
     );
   }
 }
@@ -107,4 +88,5 @@ export interface GraphqlQueryProps<Q, V> {
 interface State {
   response: AjaxResponse;
   error: any;
+  loading: boolean;
 }

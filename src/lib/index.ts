@@ -27,13 +27,18 @@ export class Api {
     return ajax.put(url + this._serialize(urlParams), body, headers || {});
   }
 
-  graphql<Variables, Response>(url: string, variables: Variables, query: string, headers: object,
+  graphql<Variables, Response>(
+    url: string,
+    variables: Variables,
+    query: string,
+    headers: object,
     response: (res: Response) => void, error: (err: any) => void) {
-    return ajax.post(
+
+      return ajax.post(
       url,
       { query, variables },
-      headers
-    ).subscribe(res => response(res.response), error)
+      headers,
+    ).subscribe(res => response(res.response), error);
   }
 
   delete(url: string, headers: object, urlParams?: object) {
