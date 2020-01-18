@@ -69,7 +69,7 @@ export class GraphqlQuery<Q, V> extends React.Component<GraphqlQueryProps<Q, V>,
       return this.props.render(null, null, loading);
     }
 
-    if (error) {
+    if (error && this.graphqlClient.params.errorHandler) {
       this.graphqlClient.params.errorHandler.error(error.status, error.response);
     }
 
